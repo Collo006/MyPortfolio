@@ -1,5 +1,4 @@
-// Service Worker for Christian Amos Portfolio PWA
-const CACHE_NAME = 'christian-portfolio-v1';
+const CACHE_NAME = 'collins-portfolio-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -7,8 +6,6 @@ const STATIC_ASSETS = [
   '/icon.svg',
   '/icon-192.png',
   '/icon-512.png',
-  '/profile.jpg',
-  '/IMG_20260926_072914.jpg'
 ];
 
 self.addEventListener('install', (event) => {

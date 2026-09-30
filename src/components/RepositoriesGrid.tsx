@@ -83,7 +83,7 @@ export const RepositoriesGrid: React.FC<RepositoriesGridProps> = ({
             </h2>
           </div>
           <div className="text-xs text-slate-400 font-mono">
-            Synced from @{username} · {repos.length} Repositories Available
+            Synced from @{username} · {repos.length} public repositories
           </div>
         </div>
 

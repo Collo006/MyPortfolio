@@ -1,5 +1,5 @@
 import { GithubUser, GithubRepo, GithubEvent } from '../types/github';
-import { FALLBACK_USER, FALLBACK_REPOS } from '../data/fallbackData';
+import { DEFAULT_GITHUB_USERNAME, FALLBACK_USER, FALLBACK_REPOS } from '../data/fallbackData';
 
 const CACHE_TTL = 10 * 60 * 1000; // 10 minutes cache
 
@@ -113,8 +113,10 @@ class GithubService {
       this.setCache(cacheKey, data);
       return data;
     } catch (err) {
-      // If it's christianamos and API failed or rate-limited, return rich fallback
-      if (username.toLowerCase() === 'christianamos' || username.toLowerCase() === 'christianamos67') {
+      if (
+        username.toLowerCase() === DEFAULT_GITHUB_USERNAME.toLowerCase() &&
+        !(err instanceof Error && err.message.includes('was not found'))
+      ) {
         return FALLBACK_USER;
       }
       throw err;
@@ -142,20 +144,10 @@ class GithubService {
 
       let repos: GithubRepo[] = await response.json();
 
-      // If user is christianamos, supplement with our curated companion repos if only 1 public repo exists
-      if (username.toLowerCase() === 'christianamos' && repos.length <= 1) {
-        const existingNames = new Set(repos.map(r => r.name.toLowerCase()));
-        for (const fb of FALLBACK_REPOS) {
-          if (!existingNames.has(fb.name.toLowerCase())) {
-            repos.push(fb);
-          }
-        }
-      }
-
       this.setCache(cacheKey, repos);
       return repos;
     } catch {
-      if (username.toLowerCase() === 'christianamos' || username.toLowerCase() === 'christianamos67') {
+      if (username.toLowerCase() === DEFAULT_GITHUB_USERNAME.toLowerCase()) {
         return FALLBACK_REPOS;
       }
       return [];

@@ -29,19 +29,11 @@ if (apiKey) {
   });
 }
 
-const SYSTEM_INSTRUCTION = `You are Christian Amos Otieno's portfolio AI voice and architectural assistant.
-Christian Amos Otieno is a high-performance Systems-Focused Software Engineer based in Kisumu, Kenya (EAT / UTC+3).
-Credentials & Background:
-- Peer-defended apprentice full-stack developer at Zone01 Kisumu.
-- B.Sc. in Microbiology and Biotechnology from Aga Khan University (2019-2022).
-- Key Systems:
-  1. LYRIC: Go HTTP 206 Partial Streaming engine using io.CopyN, MinIO, and WebSockets (78% heap memory reduction).
-  2. kijijiShare: Next.js + PostgreSQL platform with transactional advisory locks (pg_try_advisory_xact_lock) preventing concurrent double-booking.
-  3. Spatial Agritech / PostGIS: GiST spatial R-tree indexing & Hilbert clustering (query execution reduced from 118ms to 3.12ms).
-  4. Vector-Vanguard: SIMD 4-way loop unrolled Euclidean distance for 128-dim vectors.
-  5. Computational Astrophysics: Relativistic ray-tracing, Schwarzschild metric light deflection, and gravitational lensing simulation.
-- Contact: christianamos67@gmail.com, GitHub https://github.com/Christian3788.
-Respond concisely, authoritatively, and professionally. For voice spoken output, keep answers under 2-3 sentences so it is crisp and pleasing to listen to.`;
+const SYSTEM_INSTRUCTION = `You are the portfolio assistant for Collins Kipruto, whose public GitHub account is @Collo006 (https://github.com/Collo006).
+His public profile describes him as a front-end web developer who works with HTML, CSS, and JavaScript, and is learning React, Next.js, and Tailwind CSS.
+Public repositories include Chachas-Bakery (a Go bakery-management project), Pre-Inspected-Used-Cars (a responsive vehicle-browsing application), Parking-Lot-System (a collaborative project), and raytracer (a Go ray-tracing project).
+Use only these verified public details. Do not invent location, email, education, employment history, project metrics, or claims about project completion. When asked about details not listed here, direct visitors to the GitHub profile.
+Respond concisely and professionally.`;
 
 // 1. AI Assistant Chat Endpoint
 app.post('/api/assistant', async (req, res) => {
@@ -53,8 +45,8 @@ app.post('/api/assistant', async (req, res) => {
 
     if (!ai) {
       return res.json({
-        answer: `Christian Amos Otieno is a systems-focused software engineer specializing in low-overhead Go networking, PostGIS spatial indexing, and peer-defended systems at Zone01 Kisumu. You can reach him directly at christianamos67@gmail.com.`,
-        spokenText: `Christian is a systems engineer specializing in Go and PostGIS. Reach him at christianamos67@gmail.com.`,
+        answer: `Collins Kipruto is a front-end web developer. His public GitHub profile and projects are available at https://github.com/Collo006.`,
+        spokenText: `Collins Kipruto is a front-end web developer. Find his public projects on GitHub at Collo zero zero six.`,
       });
     }
 
@@ -68,7 +60,7 @@ app.post('/api/assistant', async (req, res) => {
       },
     });
 
-    const answer = response.text || 'I am happy to assist with any questions about Christian\'s systems engineering projects.';
+    const answer = response.text || 'I can help with Collins Kipruto’s public profile and GitHub projects.';
     // Clean text for text-to-speech output
     const spokenText = answer.replace(/[*#`_\[\]()]/g, '').slice(0, 240);
 
@@ -76,8 +68,8 @@ app.post('/api/assistant', async (req, res) => {
   } catch (_err: unknown) {
     // Graceful fallback on quota exhaustion (429) or transient network timeouts without noisy stderr dump
     return res.json({
-      answer: `Christian Amos Otieno is a systems engineer based in Kisumu, Kenya specializing in low-overhead Go HTTP 206 streaming, PostGIS GiST spatial indexing, and Zone01 peer-defended architectures. Direct inquiries can be dispatched to christianamos67@gmail.com.`,
-      spokenText: `Christian specializes in Go streaming and PostGIS systems. You can email him at christianamos67@gmail.com.`,
+      answer: `I cannot reach the assistant service right now. Collins Kipruto's public GitHub profile is available at https://github.com/Collo006.`,
+      spokenText: `I cannot reach the assistant service right now. Visit Collins Kipruto on GitHub.`,
     });
   }
 });
@@ -282,7 +274,7 @@ app.post('/api/newsletter', (req, res) => {
       return res.status(200).json({
         success: true,
         alreadySubscribed: true,
-        message: 'You are already subscribed to Christian Amos\'s technical dispatches!',
+        message: 'You are already subscribed to portfolio updates!',
         totalSubscribers: subscribers.length + 140,
       });
     }
@@ -309,7 +301,7 @@ app.post('/api/newsletter', (req, res) => {
 app.get('/api/newsletter/stats', (_req, res) => {
   return res.json({
     totalSubscribers: subscribers.length + 140,
-    activeTopics: ['Go Concurrency & 206 Streaming', 'PostGIS & Spatial SQL', 'Zone01 Peer Defense', 'Kernel & I/O'],
+    activeTopics: ['Front-End Development', 'GitHub Projects'],
   });
 });
 

@@ -19,14 +19,14 @@ export const SkillsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <div className="text-xs font-semibold tracking-wider text-indigo-400 uppercase font-mono mb-2">
-              07. Technical Competencies
+              Profile & Repository Signals
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white font-display">
-              Architecture & Technology Matrix
+              Skills and learning
             </h2>
           </div>
           <p className="text-sm text-slate-400 max-w-md">
-            Practiced across decades of production deployments, algorithmic problem-solving, and mission-critical SaaS operations.
+            Based on Collins&apos;s public GitHub profile and languages used in public repositories.
           </p>
         </div>
 

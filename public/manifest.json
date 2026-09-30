@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Christian Amos Otieno · Systems Engineer",
-  "short_name": "Christian",
-  "description": "Systems-focused software engineer portfolio with live Go streaming demos, PostGIS spatial queries, and real-time planetary telemetry.",
+  "name": "Collins Kipruto · Developer Portfolio",
+  "short_name": "Collins",
+  "description": "Developer portfolio showcasing public GitHub projects and repositories.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

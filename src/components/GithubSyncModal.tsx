@@ -115,7 +115,7 @@ export const GithubSyncModal: React.FC<GithubSyncModalProps> = ({
                 type="text"
                 value={usernameInput}
                 onChange={(e) => setUsernameInput(e.target.value)}
-                placeholder="christianamos"
+                placeholder="Collo006"
                 className="w-full pl-8 pr-4 py-2 text-xs bg-[#07080c] border border-white/[0.1] rounded-lg text-white font-mono placeholder-slate-600 focus:outline-none focus:border-indigo-500"
               />
             </div>
